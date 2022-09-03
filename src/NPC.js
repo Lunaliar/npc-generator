@@ -105,9 +105,9 @@ class NPC extends Component {
         <div className='NPC'>
           {Object.keys(this.state.npc).map(traitName => {
             return <div key={traitName} className="trait">
+              <button onClick={() => this.randomizeIndividualTrait(traitName)}>?</button>
               <div>{traitToHuman[traitName]}</div>
               <div>{this.state.npc[traitName]}</div>
-              <button onClick={() => this.randomizeIndividualTrait(traitName)}>Randomize</button>
             </div>
           })}
         </div>
