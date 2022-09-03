@@ -21,7 +21,7 @@ export const appearance = [
   "Exceptionally ugly"
 ]
 
-export const highScore = [
+export const highStat = [
   'Strength — powerful, brawny, strong as an ox',
   'Dexterity — lithe, agile, graceful',
   'export Constitution — hardy, hale, healthy',
@@ -30,7 +30,7 @@ export const highScore = [
   'Charisma — persuasive, forceful, born leader'
 ]
 
-export const lowScore = [
+export const lowStat = [
   "Strength — feeble, scrawny",
   "Dexterity — clumsy, fumbling",
   "export Constitution — sickly, pale",
@@ -85,7 +85,7 @@ export const mannerism = [
   "Twirls hair or tugs beard"
 ]
 
-export const interactions = [
+export const interaction = [
   "Argumentative",
   "Arrogant",
   "Blustering",
@@ -98,60 +98,6 @@ export const interactions = [
   "Ponderous",
   "Quiet",
   "Suspicious"
-]
-
-export const goodIdeal = [
-  "Beauty",
-  "Charity",
-  "Greater",
-  "Life",
-  "Respect",
-  "Self-sacrifice"
-]
-
-export const evilIdeal = [
-  "Domination",
-  "Greed",
-  "Good Might",
-  "Pain",
-  "Retribution",
-  "Slaughter",
-]
-
-export const lawfulIdeal = [
-  "Community",
-  "Fairness",
-  "Honor",
-  "Logic",
-  "Responsibility",
-  "Tradition"
-]
-
-export const chaoticIdeal = [
-  "Change",
-  "Creativity",
-  "Freedom",
-  "Independence",
-  "No limits",
-  "Whimsy"
-]
-
-export const neutralIdeal = [
-  "Balance",
-  "Knowledge",
-  "Live and let live",
-  "Moderation",
-  "Neutrality",
-  "People"
-]
-
-export const otherIdeal = [
-  "Aspiration",
-  "Discovery",
-  "Glory",
-  "Nation",
-  "Redemption",
-  "Self-knowledge"
 ]
 
 export const bond = [
@@ -182,7 +128,7 @@ export const flaw = [
   "Foolhardy bravery"
 ]
 
-export const fears = [
+export const fear = [
   'The sea',
   'germaphobe',
   'heights',
@@ -224,3 +170,56 @@ export const zodiac = [
   'pisces',
   'libra',
 ]
+
+export const ideal = {
+  good: [
+    "Beauty",
+    "Charity",
+    "Greater",
+    "Life",
+    "Respect",
+    "Self-sacrifice"
+  ],
+  evil: [
+    "Domination",
+    "Greed",
+    "Good Might",
+    "Pain",
+    "Retribution",
+    "Slaughter",
+  ],
+  lawful: [
+    "Community",
+    "Fairness",
+    "Honor",
+    "Logic",
+    "Responsibility",
+    "Tradition"
+  ],
+  chaotic: [
+    "Change",
+    "Creativity",
+    "Freedom",
+    "Independence",
+    "No limits",
+    "Whimsy"
+  ],
+  neutral: [
+    "Balance",
+    "Knowledge",
+    "Live and let live",
+    "Moderation",
+    "Neutrality",
+    "People"
+  ],
+  other: [
+    "Aspiration",
+    "Discovery",
+    "Glory",
+    "Nation",
+    "Redemption",
+    "Self-knowledge"
+  ],
+}
+
+export const idealCategories = Object.keys(ideal)

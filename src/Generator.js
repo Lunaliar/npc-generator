@@ -1,27 +1,10 @@
 import React, { Component } from 'react';
 import NPC from './NPC';
-import * as traits from "./traits"
 
 class Generator extends Component {
-  constructor(props) {
-    super(props)
-    this.renderNPC = this.renderNPC.bind(this)
-    this.clickHandler = this.clickHandler.bind(this)
-  }
-
-  renderNPC() {
-    /**TODO display data of npc */
-    return (<NPC />)
-  }
-
-  clickHandler() {
-
-  }
-
   render() {
     return (
       <div className='Generator'>
-        <h1>NPC Generator</h1>
         <NPC />
       </div>
     )
@@ -41,6 +24,7 @@ export default Generator
 // in the future, we might want the ability to do multiple of these simultaneously
 
 // stretch goals: 
+// make the ideal look different stylistically depending on what category it is
 // use Material UI to make it look sick
 // query a name API for character names
 // query a animal API for pets
