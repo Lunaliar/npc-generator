@@ -34,7 +34,7 @@ const traitToHuman = {
   ideal: 'Ideal',
 }
 
-function generateRandomTraits(idealCategory) {
+function generateRandomTraits(idealCategory = getRandomValue(traits.idealCategories)) {
   return {
     appearance: getRandomValue(traits.appearance),
     aesthetic: getRandomValue(traits.aesthetic),
@@ -55,9 +55,8 @@ function generateRandomTraits(idealCategory) {
 class NPC extends Component {
   constructor(props) {
     super(props)
-    const idealCategory = getRandomValue(traits.idealCategories)
     this.state = {
-      npc: generateRandomTraits(idealCategory)
+      npc: generateRandomTraits()
     };
   }
 
@@ -75,10 +74,8 @@ class NPC extends Component {
           }
         }
       } else if (traitName === "idealCategory") {
-        const idealCategory = getRandomValue(traits.idealCategories)
-        const newNpc = generateRandomTraits(prevState.npc.idealCategory)
-
-        const { ideal } = newNpc
+        const newNpc = generateRandomTraits()
+        const { ideal, idealCategory } = newNpc
         return {
           npc: {
             ...currentNpc,
