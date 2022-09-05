@@ -92,7 +92,7 @@ class NPC extends Component {
 
   render() {
     return (
-      <>
+      <div className='npc-card'>
         <button onClick={() => {
           const newNpc = generateRandomTraits()
           this.setState({ npc: newNpc, workingNpc: { ...newNpc } })
@@ -107,35 +107,37 @@ class NPC extends Component {
           :
           <button onClick={() => this.setState({ isEditing: true })}>✏️</button>
         }
-        <div className='NPC'>
+        <div className="traits">
           {Object.keys(this.state.npc).map(traitName => {
             return (
-              <div key={traitName} className="trait">
-                <div>{traitToHuman[traitName]}</div>
-                {this.state.isEditing ?
-                  <>
-                    <select name={traitName} value={this.state.workingNpc[traitName]} onChange={e => {
-                      this.setState({
-                        workingNpc: {
-                          ...this.state.workingNpc,
-                          [traitName]: e.target.value
-                        }
-                      })
-                    }}>
-                      {traits[traitName].map(t => {
-                        return <option key={t} value={t}>{t}</option>
-                      })}
-                    </select>
-                    <button onClick={() => this.randomizeIndividualTrait(traitName)}>?</button>
-                  </>
-                  :
-                  <div>{this.state.npc[traitName]}</div>
-                }
+              <div key={traitName} className="trait-row">
+                <div className="trait-name">{traitToHuman[traitName]}</div>
+                <div className="trait-value">
+                  {this.state.isEditing ?
+                    <>
+                      <select name={traitName} value={this.state.workingNpc[traitName]} onChange={e => {
+                        this.setState({
+                          workingNpc: {
+                            ...this.state.workingNpc,
+                            [traitName]: e.target.value
+                          }
+                        })
+                      }}>
+                        {traits[traitName].map(t => {
+                          return <option key={t} value={t}>{t}</option>
+                        })}
+                      </select>
+                      <button onClick={() => this.randomizeIndividualTrait(traitName)}>?</button>
+                    </>
+                    :
+                    <div>{this.state.npc[traitName]}</div>
+                  }
+                </div>
               </div>
             )
           })}
         </div>
-      </>
+      </div>
     )
   }
 }

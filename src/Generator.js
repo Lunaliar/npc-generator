@@ -4,7 +4,7 @@ import NPC from './NPC';
 class Generator extends Component {
   render() {
     return (
-      <div className='Generator'>
+      <div className='npc-list'>
         <NPC />
       </div>
     )
@@ -28,4 +28,4 @@ export default Generator
 // use Material UI to make it look sick
 // query a name API for character names
 // query a animal API for pets
-// use localStorage to save characteristics
+// use localStorage to save characteristics (and view later)
