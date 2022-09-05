@@ -28,3 +28,4 @@ export default Generator
 // use Material UI to make it look sick
 // query a name API for character names
 // query a animal API for pets
+// use localStorage to save characteristics
