@@ -140,7 +140,7 @@ class NPC extends Component {
           {this.state.isEditing ?
             <>
               <button onClick={() => {
-                const newNpc = generateRandomTraits()
+                const newNpc = generateNpc(this.state.workingNpc.name)
                 this.setState({ npc: newNpc, workingNpc: { ...newNpc } })
               }}>Midlife Crisis</button>
               <button onClick={() => this.setState({ isEditing: false, workingNpc: { ...this.state.npc } })}>Discard</button>
