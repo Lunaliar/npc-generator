@@ -40,5 +40,9 @@
   "main": "index.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1"
+  }
 }

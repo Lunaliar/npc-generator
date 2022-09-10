@@ -1,15 +1,15 @@
-import './normalize.css';
-import './App.css';
-import Generator from './Generator';
+import './normalize.css'
+import './App.css'
+import Generator from './Generator'
 
 function App() {
   return (
     <div className="App">
       <h1>NPC Generator</h1>
-      <Generator  />
+      <Generator />
       <footer>Made with ❤️ by Sav, Lino, and Jake</footer>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

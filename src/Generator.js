@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
-import NPC from './NPC';
+import React, {Component} from 'react'
+import NPC from './NPC'
 
 class Generator extends Component {
   render() {
     return (
-      <div className='npc-list'>
+      <div className="npc-list">
         <NPC />
       </div>
     )
   }
 }
 export default Generator
-
 
 // Tasks
 // we have lists of data
@@ -23,7 +22,7 @@ export default Generator
 
 // in the future, we might want the ability to do multiple of these simultaneously
 
-// stretch goals: 
+// stretch goals:
 // make the ideal look different stylistically depending on what category it is
 // use Material UI to make it look sick
 // query a name API for character names

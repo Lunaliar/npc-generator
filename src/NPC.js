@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import * as traits from "./traits"
+import * as traits from './traits'
 
 /** Get random integer from inclusive range */
 function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
 function getRandomValue(values) {
@@ -47,19 +47,19 @@ function generateRandomTraits() {
 function generateNpc(name) {
   return {
     name,
-    traits: generateRandomTraits()
+    traits: generateRandomTraits(),
   }
 }
 
 class NPC extends Component {
   constructor(props) {
     super(props)
-    const initialNpc = generateNpc("Simp")
+    const initialNpc = generateNpc('Simp')
     this.state = {
       npc: initialNpc,
       workingNpc: { ...initialNpc },
-      isEditing: false
-    };
+      isEditing: false,
+    }
   }
 
   randomizeIndividualTrait = traitName => {
@@ -90,8 +90,8 @@ class NPC extends Component {
       return {
         workingNpc: {
           ...currentNpc,
-          [traitName]: newNpc[traitName]
-        }
+          [traitName]: newNpc[traitName],
+        },
       }
       // }
     })
@@ -99,63 +99,95 @@ class NPC extends Component {
 
   render() {
     return (
-      <div className='npc-card'>
-        {this.state.isEditing ?
+      <div className="npc-card">
+        {this.state.isEditing ? (
           <input
             value={this.state.workingNpc.name}
-            onChange={e => this.setState(prevState => ({ workingNpc: { ...prevState.workingNpc, name: e.target.value } }))}
-          /> :
-          <div className="npc-name">{this.state.npc.name}</div>}
+            onChange={e =>
+              this.setState(prevState => ({
+                workingNpc: { ...prevState.workingNpc, name: e.target.value },
+              }))
+            }
+          />
+        ) : (
+          <div className="npc-name">{this.state.npc.name}</div>
+        )}
         <div className="traits">
           {Object.keys(this.state.npc.traits).map(traitName => {
             return (
               <div key={traitName} className="trait-row">
                 <div className="trait-name">{traitToHuman[traitName]}</div>
                 <div className="trait-value">
-                  {this.state.isEditing ?
+                  {this.state.isEditing && <div>farto</div>}
+                  {this.state.isEditing ? (
                     <>
-                      <select name={traitName} value={this.state.workingNpc[traitName]} onChange={e => {
-                        this.setState({
-                          workingNpc: {
-                            ...this.state.workingNpc,
-                            [traitName]: e.target.value
-                          }
-                        })
-                      }}>
+                      <select
+                        name={traitName}
+                        value={this.state.workingNpc[traitName]}
+                        onChange={e => {
+                          this.setState({
+                            workingNpc: {
+                              ...this.state.workingNpc,
+                              [traitName]: e.target.value,
+                            },
+                          })
+                        }}
+                      >
                         {traits[traitName].map(t => {
-                          return <option key={t} value={t}>{t}</option>
+                          return (
+                            <option key={t} value={t}>
+                              {t}
+                            </option>
+                          )
                         })}
                       </select>
-                      <button onClick={() => this.randomizeIndividualTrait(traitName)}>?</button>
+                      <button
+                        onClick={() => this.randomizeIndividualTrait(traitName)}
+                      >
+                        ?
+                      </button>
                     </>
-                    :
+                  ) : (
                     <div>{this.state.npc.traits[traitName]}</div>
-                  }
+                  )}
                 </div>
               </div>
             )
           })}
         </div>
         <div className="controls">
-          {this.state.isEditing ?
+          {this.state.isEditing ? (
             <>
-              <button onClick={() => {
-                const newNpc = generateNpc(this.state.workingNpc.name)
-                this.setState({ npc: newNpc, workingNpc: { ...newNpc } })
-              }}>Midlife Crisis</button>
-              <button onClick={() => this.setState({ isEditing: false, workingNpc: { ...this.state.npc } })}>Discard</button>
-              <button onClick={() => {
-                this.setState({ isEditing: false, npc: { ...this.state.workingNpc } })
-              }}>Save</button>
+              <button
+                onClick={() => {
+                  const newNpc = generateNpc(this.state.workingNpc.name)
+                  this.setState({ npc: newNpc, workingNpc: { ...newNpc } })
+                }}
+              >
+                Midlife Crisis
+              </button>
+              <button
+                onClick={() =>
+                  this.setState({ isEditing: false, workingNpc: { ...this.state.npc } })
+                }
+              >
+                Discard
+              </button>
+              <button
+                onClick={() => {
+                  this.setState({ isEditing: false, npc: { ...this.state.workingNpc } })
+                }}
+              >
+                Save
+              </button>
             </>
-            :
+          ) : (
             <button onClick={() => this.setState({ isEditing: true })}>✏️</button>
-          }
+          )}
         </div>
       </div>
     )
   }
 }
-
 
 export default NPC
