@@ -1,15 +1,14 @@
-import React, {Component} from 'react'
+import React from 'react'
 import NPC from './NPC'
 
-class Generator extends Component {
-  render() {
-    return (
-      <div className="npc-list">
-        <NPC />
-      </div>
-    )
-  }
+function Generator() {
+  return (
+    <div className="npc-list">
+      <NPC />
+    </div>
+  )
 }
+
 export default Generator
 
 // Tasks

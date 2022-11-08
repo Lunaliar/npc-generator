@@ -24,7 +24,7 @@ export const appearance = [
 export const highStat = [
   'Strength — powerful, brawny, strong as an ox',
   'Dexterity — lithe, agile, graceful',
-  'export Constitution — hardy, hale, healthy',
+  'Constitution — hardy, hale, healthy',
   'Intelligence — studious, learned, inquisitive',
   'Wisdom — perceptive, spiritual, insightful',
   'Charisma — persuasive, forceful, born leader',
