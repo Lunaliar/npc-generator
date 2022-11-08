@@ -1,12 +1,15 @@
 import React, {useState} from 'react'
 import * as traits from './traits'
+import {GiPerspectiveDiceSixFacesRandom} from 'react-icons/gi'
 
 /** Get random integer from inclusive range */
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min
-}
-
+// function getRandomInt(min, max) {
+//   return Math.floor(Math.random() * (max - min + 1)) + min
+// }
 function getRandomValue(values) {
+  const getRandomInt = (max, min) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+  }
   return values[getRandomInt(0, values.length - 1)]
 }
 
@@ -37,10 +40,8 @@ function generateRandomTraits() {
     flaw: getRandomValue(traits.flaw),
     fear: getRandomValue(traits.fear),
     zodiac: getRandomValue(traits.zodiac),
-    lowStat: getRandomValue(traits.lowStat),
     highStat: getRandomValue(traits.highStat),
-    // idealCategory,
-    // ideal: getRandomValue(traits.ideal[idealCategory])
+    lowStat: getRandomValue(traits.lowStat),
   }
 }
 
@@ -52,7 +53,7 @@ function generateNpc(name) {
 }
 
 function NPC() {
-  const initialNpc = generateNpc('Simp')
+  const initialNpc = generateNpc('Anonymous')
   const [state, setState] = useState({
     npc: initialNpc,
     workingNpc: {...initialNpc},
@@ -62,54 +63,37 @@ function NPC() {
   const randomizeIndividualTrait = traitName => {
     setState(prevState => {
       const currentNpc = prevState.npc
-      // if (traitName === "ideal") {
-      //   const newNpc = generateRandomTraits(prevState.npc.idealCategory)
-      //   const { ideal, idealCategory } = newNpc
-      //   return {
-      //     npc: {
-      //       ...currentNpc,
-      //       ideal,
-      //       idealCategory
-      //     }
-      //   }
-      // } else if (traitName === "idealCategory") {
-      //   const newNpc = generateRandomTraits()
-      //   const { ideal, idealCategory } = newNpc
-      //   return {
-      //     npc: {
-      //       ...currentNpc,
-      //       ideal,
-      //       idealCategory
-      //     }
-      //   }
-      // } else {
       const newNpc = generateNpc(prevState.npc.name)
       return {
         ...state,
         workingNpc: {
           ...currentNpc,
-          [traitName]: newNpc[traitName],
+          traits: {
+            ...state.workingNpc.traits,
+            [traitName]: newNpc.traits[traitName],
+          },
         },
       }
-      // }
     })
   }
 
   return (
     <div className="npc-card">
-      {state.isEditing ? (
-        <input
-          value={state.workingNpc.name}
-          onChange={e =>
-            setState(prevState => ({
-              ...state,
-              workingNpc: {...prevState.workingNpc, name: e.target.value},
-            }))
-          }
-        />
-      ) : (
-        <div className="npc-name">{state.npc.name}</div>
-      )}
+      <div className="name-container">
+        {state.isEditing ? (
+          <input
+            value={state.workingNpc.name}
+            onChange={e =>
+              setState(prevState => ({
+                ...state,
+                workingNpc: {...prevState.workingNpc, name: e.target.value},
+              }))
+            }
+          />
+        ) : (
+          <div className="npc-name">{state.npc.name}</div>
+        )}
+      </div>
       <div className="traits">
         {Object.keys(state.npc.traits).map(traitName => {
           return (
@@ -126,21 +110,28 @@ function NPC() {
                           ...state,
                           workingNpc: {
                             ...state.workingNpc,
-                            [traitName]: e.target.value,
+                            traits: {
+                              ...state.workingNpc.traits,
+                              [traitName]: e.target.value,
+                            },
                           },
                         })
                       }}
                     >
                       {traits[traitName].map(t => {
                         return (
-                          <option key={t} value={t}>
+                          <option key={t} value={t} placeholder={traitName}>
                             {t}
                           </option>
                         )
                       })}
                     </select>
-                    <button onClick={() => randomizeIndividualTrait(traitName)}>
-                      ?
+                    <button
+                      onClick={() => {
+                        randomizeIndividualTrait(traitName)
+                      }}
+                    >
+                      <GiPerspectiveDiceSixFacesRandom />
                     </button>
                   </>
                 ) : (
@@ -157,10 +148,15 @@ function NPC() {
             <button
               onClick={() => {
                 const newNpc = generateNpc(state.workingNpc.name)
-                setState({...state, npc: newNpc, workingNpc: {...newNpc}})
+                return setState({
+                  ...state,
+                  isEditing: false,
+                  npc: newNpc,
+                  workingNpc: {...newNpc},
+                })
               }}
             >
-              Midlife Crisis
+              Randomize
             </button>
             <button
               onClick={() =>
@@ -178,7 +174,9 @@ function NPC() {
             </button>
           </>
         ) : (
-          <button onClick={() => setState({...state, isEditing: true})}>✏️</button>
+          <div className="edit-toggle">
+            <button onClick={() => setState({...state, isEditing: true})}>✏️</button>
+          </div>
         )}
       </div>
     </div>

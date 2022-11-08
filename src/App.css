@@ -10,29 +10,61 @@
 h1 {
   text-align: center;
 }
-
+.name-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
 .trait {
   display: flex;
   gap: 16px;
 }
-
+.npc-generator {
+  display: flex;
+  justify-content: center;
+}
 .npc-list {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   padding: 40px;
+}
+.add-npc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 24px;
+  border-radius: 50%;
+  width: 600px;
+}
+.add-npc button {
+  color: white;
+  border: 0.3rem solid white;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 3rem;
+  user-select: none;
 }
 
 .npc-card {
   padding: 32px 24px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 4px;
+  border-radius: 0.75rem;
   background: white;
   color: black;
+  width: 600px;
 }
 
 .traits {
   display: flex;
   flex-direction: column;
+  margin: 0.5rem;
   gap: 8px;
 }
 
@@ -40,9 +72,16 @@ h1 {
   display: flex;
   justify-content: space-between;
   gap: 24px;
+  margin: 0.2rem 0;
 }
 
 footer {
   padding: 8px;
   text-align: center;
+}
+
+.edit-toggle {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.7rem;
 }

@@ -1,10 +1,27 @@
 import React from 'react'
+import {useState} from 'react'
 import NPC from './NPC'
-
+import {ImUserPlus} from 'react-icons/im'
+import {uuid} from 'uuidv4'
 function Generator() {
+  const [npcs, setNpcs] = useState([])
+
+  const clickHandler = () => {
+    setNpcs([...npcs])
+  }
   return (
-    <div className="npc-list">
-      <NPC />
+    <div className="npc-generator">
+      <div className="npc-list">
+        {npcs &&
+          npcs.map(n => {
+            return <NPC key={n} />
+          })}
+        <div className="add-npc" title="Add NPC">
+          <button onClick={clickHandler}>
+            <ImUserPlus size={150} />
+          </button>
+        </div>
+      </div>
     </div>
   )
 }

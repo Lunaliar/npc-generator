@@ -33,7 +33,7 @@ export const highStat = [
 export const lowStat = [
   'Strength — feeble, scrawny',
   'Dexterity — clumsy, fumbling',
-  'export Constitution — sickly, pale',
+  'Constitution — sickly, pale',
   'Intelligence — dim-witted, slow',
   'Wisdom — oblivious, absentminded',
   'Charisma — dull, boring',
@@ -110,7 +110,6 @@ export const bond = [
   'Protective of a sentimental keepsake',
   'Protective of a valuable possession',
   'Out for revenge',
-  'Roll twice, ignoring results of 10',
 ]
 
 export const flaw = [
@@ -130,45 +129,43 @@ export const flaw = [
 
 export const fear = [
   'The sea',
-  'germaphobe',
-  'heights',
-  'bugs',
-  'birds',
-  'agoraphobia',
-  'cats and dogs',
-  'younger people',
+  'Germaphobe',
+  'Heights',
+  'Bugs',
+  'Birds',
+  'Agoraphobia',
+  'Cats and dogs',
+  'Younger people',
   'The dark',
-  'public speaking',
-  'monsters',
+  'Public speaking',
+  'Monsters',
 ]
 
 export const aesthetic = [
-  'goth',
-  'tech',
-  'nerd',
-  'prep',
-  'punk',
-  'gay',
-  'e-person',
-  'soft',
-  'cottage-core',
-  'hard',
-  'sharp & pointy',
+  'Goth',
+  'Steam-punk',
+  'Nerd',
+  'Prep',
+  'Punk',
+  'Soft',
+  'Cottage-core',
+  'Hard',
+  'Sharp & pointy',
 ]
 
 export const zodiac = [
-  'aries',
-  'taurus',
-  'gemini',
-  'cancer',
-  'leo',
-  'vrigo',
-  'scorpio',
-  'sagitarius',
-  'capricorn',
-  'aquarius',
-  'pisces',
-  'libra',
+  'Aries',
+  'Taurus',
+  'Gemini',
+  'Cancer',
+  'Leo',
+  'Virgo',
+  'Scorpio',
+  'Sagitarius',
+  'Capricorn',
+  'Aquarius',
+  'Pisces',
+  'Libra',
 ]
 
 export const ideal = {
