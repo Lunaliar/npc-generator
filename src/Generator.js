@@ -4,21 +4,31 @@ import NPC from './NPC'
 import {ImUserPlus} from 'react-icons/im'
 function Generator() {
   const [npcs, setNpcs] = useState([])
-
-  const clickHandler = () => {
-    setNpcs(prevNPCS => [...prevNPCS, {name: 'anon', id: prevNPCS.length}])
+  const [input, setInput] = useState('')
+  const handleSubmit = e => {
+    e.preventDefault()
+    setNpcs(prevNPCS => [...prevNPCS, {name: input, id: prevNPCS.length}])
+    setInput('')
   }
   return (
     <div className="npc-generator">
       <div className="npc-list">
         {npcs &&
-          npcs.map(n => {
-            return <NPC key={n.id} />
+          npcs.map(npc => {
+            return <NPC key={npc.id} name={npc.name} />
           })}
         <div className="add-npc" title="Add NPC">
-          <button onClick={clickHandler}>
-            <ImUserPlus size={150} />
-          </button>
+          <form onSubmit={e => handleSubmit(e)}>
+            <button type="submit">
+              <ImUserPlus size={150} />
+            </button>
+            <input
+              type="text"
+              required
+              onChange={e => setInput(e.target.value)}
+              value={input}
+            />
+          </form>
         </div>
       </div>
     </div>

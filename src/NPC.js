@@ -52,13 +52,15 @@ function generateNpc(name) {
   }
 }
 
-function NPC() {
-  const initialNpc = generateNpc('Anonymous')
+function NPC({name}) {
+  //! STATE ////////////////////////////////
+  const initialNpc = generateNpc(name)
   const [state, setState] = useState({
     npc: initialNpc,
     workingNpc: {...initialNpc},
     isEditing: false,
   })
+  //! FUNCTIONS //////////////////////////////////////
 
   const randomizeIndividualTrait = traitName => {
     setState(prevState => {
@@ -77,19 +79,46 @@ function NPC() {
     })
   }
 
+  const randomizeAll = () => {
+    const newNpc = generateNpc(state.workingNpc.name)
+    return setState({
+      ...state,
+      npc: newNpc,
+      workingNpc: {...newNpc},
+    })
+  }
+
+  const selectTrait = (e, traitName) => {
+    setState({
+      ...state,
+      workingNpc: {
+        ...state.workingNpc,
+        traits: {
+          ...state.workingNpc.traits,
+          [traitName]: e.target.value,
+        },
+      },
+    })
+  }
+
+  const changeName = e => {
+    return setState(prevState => ({
+      ...state,
+      workingNpc: {...prevState.workingNpc, name: e.target.value},
+    }))
+  }
+
+  const save = () =>
+    setState({...state, isEditing: false, npc: {...state.workingNpc}})
+  const discard = () =>
+    setState({...state, isEditing: false, workingNpc: {...state.npc}})
+  const editToggle = () => setState({...state, isEditing: true})
+
   return (
     <div className="npc-card">
       <div className="name-container">
         {state.isEditing ? (
-          <input
-            value={state.workingNpc.name}
-            onChange={e =>
-              setState(prevState => ({
-                ...state,
-                workingNpc: {...prevState.workingNpc, name: e.target.value},
-              }))
-            }
-          />
+          <input value={state.workingNpc.name} onChange={e => changeName(e)} />
         ) : (
           <div className="npc-name">{state.npc.name}</div>
         )}
@@ -104,23 +133,12 @@ function NPC() {
                   <>
                     <select
                       name={traitName}
-                      value={state.workingNpc[traitName]}
-                      onChange={e => {
-                        setState({
-                          ...state,
-                          workingNpc: {
-                            ...state.workingNpc,
-                            traits: {
-                              ...state.workingNpc.traits,
-                              [traitName]: e.target.value,
-                            },
-                          },
-                        })
-                      }}
+                      value={state.workingNpc.traits[traitName]}
+                      onChange={e => selectTrait(e, traitName)}
                     >
                       {traits[traitName].map(t => {
                         return (
-                          <option key={t} value={t} placeholder={traitName}>
+                          <option key={t} value={t}>
                             {t}
                           </option>
                         )
@@ -145,37 +163,13 @@ function NPC() {
       <div className="controls">
         {state.isEditing ? (
           <>
-            <button
-              onClick={() => {
-                const newNpc = generateNpc(state.workingNpc.name)
-                return setState({
-                  ...state,
-                  isEditing: false,
-                  npc: newNpc,
-                  workingNpc: {...newNpc},
-                })
-              }}
-            >
-              Randomize
-            </button>
-            <button
-              onClick={() =>
-                setState({...state, isEditing: false, workingNpc: {...state.npc}})
-              }
-            >
-              Discard
-            </button>
-            <button
-              onClick={() => {
-                setState({...state, isEditing: false, npc: {...state.workingNpc}})
-              }}
-            >
-              Save
-            </button>
+            <button onClick={randomizeAll}>Randomize</button>
+            <button onClick={discard}>Discard</button>
+            <button onClick={save}>Save</button>
           </>
         ) : (
           <div className="edit-toggle">
-            <button onClick={() => setState({...state, isEditing: true})}>✏️</button>
+            <button onClick={editToggle}>✏️</button>
           </div>
         )}
       </div>

@@ -1,13 +1,13 @@
 export const appearance = [
-  'Distinctive jewelry: earrings, necklace, circlet, bracelets',
+  'Distinctive jewelry',
   'Piercings',
-  'Flamboyant or outlandish clothes',
+  'Flamboyant or strange clothing',
   'Formal, clean clothes',
   'Ragged, dirty clothes',
   'Pronounced scar',
   'Missing teeth',
   'Missing fingers',
-  'Unusual eye color (or two different colors)',
+  'Unusual eye color',
   'Tattoos',
   'Birthmark',
   'Unusual skin color',
@@ -16,13 +16,13 @@ export const appearance = [
   'Unusual hair color',
   'Nervous eye twitch',
   'Distinctive nose',
-  'Distinctive posture (crooked or rigid)',
+  'Distinctive posture',
   'Exceptionally beautiful',
   'Exceptionally ugly',
 ]
 
 export const highStat = [
-  'Strength — powerful, brawny, strong as an ox',
+  'Strength — powerful, brawny, ',
   'Dexterity — lithe, agile, graceful',
   'Constitution — hardy, hale, healthy',
   'Intelligence — studious, learned, inquisitive',
@@ -41,7 +41,7 @@ export const lowStat = [
 
 export const talent = [
   'Plays a musical instrument',
-  'Speaks several languages fluently',
+  'Speaks many languages fluently',
   'Unbelievably lucky',
   'Perfect memory',
   'Great with animals',
@@ -55,16 +55,16 @@ export const talent = [
   'Drinks everyone under the table',
   'Expert carpenter',
   'Expert cook',
-  'Expert dart thrower and rock skipper',
+  'Expert dart thrower',
   'Expert juggler',
-  'Skilled actor and master of disguise',
+  'Skilled actor / master of disguise',
   'Skilled dancer',
   'Knows thieves cant',
 ]
 
 export const mannerism = [
-  'Prone to singing, whistling, or humming quietly',
-  'Speaks in rhyme or some other peculiar way',
+  'Prone to singing, or humming quietly',
+  'Speaks in rhyme or other peculiar ways',
   'Particularly low or high voice',
   'Speaks in an unusually formal manner',
   'Enunciates overly clearly',
@@ -101,10 +101,10 @@ export const interaction = [
 ]
 
 export const bond = [
-  'Dedicated to fulfilling a personal life goal',
+  'Dedicated to a personal life goal',
   'Protective of close family members',
   'Protective of colleagues or compatriots',
-  'Loyal to a benefactor, patron, or employer',
+  'Loyal to a benefactor, or patron',
   'Captivated by a romantic interest',
   'Drawn to a special place',
   'Protective of a sentimental keepsake',
@@ -113,10 +113,10 @@ export const bond = [
 ]
 
 export const flaw = [
-  'Forbidden love or susceptibility to romance',
+  'Forbidden love or easily romanced',
   'Enjoys decadent pleasures',
   'Arrogance',
-  'Envies another creature’s possessions or station',
+  "Envies another's possessions",
   'Overpowering greed',
   'Prone to rage',
   'Has a powerful enemy',
