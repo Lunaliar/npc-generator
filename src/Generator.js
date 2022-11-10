@@ -10,12 +10,18 @@ function Generator() {
     setNpcs(prevNPCS => [...prevNPCS, {name: input, id: prevNPCS.length}])
     setInput('')
   }
+  const deleteNPC = id => {
+    const updatedNPCs = npcs.filter(npc => npc.id !== id)
+    setNpcs(updatedNPCs)
+  }
   return (
     <div className="npc-generator">
       <div className="npc-list">
         {npcs &&
           npcs.map(npc => {
-            return <NPC key={npc.id} name={npc.name} />
+            return (
+              <NPC key={npc.id} name={npc.name} deleteNPC={deleteNPC} id={npc.id} />
+            )
           })}
         <div className="add-npc" title="Add NPC">
           <form onSubmit={e => handleSubmit(e)}>

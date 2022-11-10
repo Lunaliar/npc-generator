@@ -54,7 +54,7 @@ function generateNpc(name) {
   }
 }
 
-function NPC({name}) {
+function NPC({name, deleteNPC, id}) {
   //! STATE ////////////////////////////////
   const initialNpc = generateNpc(name)
   const [state, setState] = useState({
@@ -197,7 +197,11 @@ function NPC({name}) {
               <GrEdit onClick={editToggle} size={iconSize} title="Edit NPC" />
             </div>
             <div className="icon delete-icon">
-              <GrTrash size={iconSize} title="Delete NPC" />
+              <GrTrash
+                size={iconSize}
+                title="Delete NPC"
+                onClick={() => deleteNPC(id)}
+              />
             </div>
           </>
         )}
