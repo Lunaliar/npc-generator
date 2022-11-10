@@ -20,9 +20,10 @@ function Generator() {
         <div className="add-npc" title="Add NPC">
           <form onSubmit={e => handleSubmit(e)}>
             <button type="submit">
-              <ImUserPlus size={150} />
+              <ImUserPlus size={170} />
             </button>
             <input
+              placeholder="Give me a name..."
               type="text"
               required
               onChange={e => setInput(e.target.value)}
