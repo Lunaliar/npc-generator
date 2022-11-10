@@ -22,21 +22,21 @@ export const appearance = [
 ]
 
 export const highStat = [
-  'Strength — powerful, brawny, ',
-  'Dexterity — lithe, agile, graceful',
-  'Constitution — hardy, hale, healthy',
-  'Intelligence — studious, learned, inquisitive',
-  'Wisdom — perceptive, spiritual, insightful',
-  'Charisma — persuasive, forceful, born leader',
+  'Strength',
+  'Dexterity',
+  'Constitution',
+  'Intelligence',
+  'Wisdom',
+  'Charisma',
 ]
 
 export const lowStat = [
-  'Strength — feeble, scrawny',
-  'Dexterity — clumsy, fumbling',
-  'Constitution — sickly, pale',
-  'Intelligence — dim-witted, slow',
-  'Wisdom — oblivious, absentminded',
-  'Charisma — dull, boring',
+  'Strength',
+  'Dexterity',
+  'Constitution',
+  'Intelligence',
+  'Wisdom',
+  'Charisma',
 ]
 
 export const talent = [
@@ -57,7 +57,7 @@ export const talent = [
   'Expert cook',
   'Expert dart thrower',
   'Expert juggler',
-  'Skilled actor / master of disguise',
+  'Skilled actor/master of disguise',
   'Skilled dancer',
   'Knows thieves cant',
 ]

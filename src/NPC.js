@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import * as traits from './traits'
-import {GiPerspectiveDiceSixFacesRandom, GiCancel, GiCheckMark} from 'react-icons/gi'
-import {GrEdit} from 'react-icons/gr'
+import {GiPerspectiveDiceSixFacesRandom, GiCheckMark} from 'react-icons/gi'
+import {GrClose, GrEdit, GrTrash} from 'react-icons/gr'
 /** Get random integer from inclusive range */
 // function getRandomInt(min, max) {
 //   return Math.floor(Math.random() * (max - min + 1)) + min
@@ -24,9 +24,9 @@ const traitToHuman = {
   bond: 'Bond',
   flaw: 'Flaw',
   fear: 'Fear',
-  zodiac: 'Zodiac',
   lowStat: 'Low stat',
   highStat: 'High stat',
+  zodiac: 'Zodiac',
   // idealCategory: 'Ideal category',
   // ideal: 'Ideal',
 }
@@ -41,9 +41,9 @@ function generateRandomTraits() {
     bond: getRandomValue(traits.bond),
     flaw: getRandomValue(traits.flaw),
     fear: getRandomValue(traits.fear),
-    zodiac: getRandomValue(traits.zodiac),
     highStat: getRandomValue(traits.highStat),
     lowStat: getRandomValue(traits.lowStat),
+    zodiac: getRandomValue(traits.zodiac),
   }
 }
 
@@ -134,39 +134,42 @@ function NPC({name}) {
           return (
             <div key={traitName} className="trait-row">
               <div className="trait-items">
+                {state.isEditing && (
+                  <div className="trait-icon">
+                    <GiPerspectiveDiceSixFacesRandom
+                      onClick={() => {
+                        if (!state.isEditing) return
+                        randomizeIndividualTrait(traitName)
+                      }}
+                      size={25}
+                      title="Randomize Trait"
+                      className="randomTrait-icon"
+                    />
+                  </div>
+                )}
                 <div className="trait-name">{traitToHuman[traitName]}</div>
-                <div className="trait-value">
-                  {state.isEditing ? (
-                    <>
-                      <select
-                        name={traitName}
-                        value={state.workingNpc.traits[traitName]}
-                        onChange={e => selectTrait(e, traitName)}
-                      >
-                        {traits[traitName].map(t => {
-                          return (
-                            <option key={t} value={t}>
-                              {t}
-                            </option>
-                          )
-                        })}
-                      </select>
-                    </>
-                  ) : (
-                    <div>{state.npc.traits[traitName]}</div>
-                  )}
-                </div>
               </div>
-              {state.isEditing && (
-                <GiPerspectiveDiceSixFacesRandom
-                  onClick={() => {
-                    if (!state.isEditing) return
-                    randomizeIndividualTrait(traitName)
-                  }}
-                  size={iconSize}
-                  title="Randomize Trait"
-                />
-              )}
+              <div className="trait-value">
+                {state.isEditing ? (
+                  <>
+                    <select
+                      name={traitName}
+                      value={state.workingNpc.traits[traitName]}
+                      onChange={e => selectTrait(e, traitName)}
+                    >
+                      {traits[traitName].map(t => {
+                        return (
+                          <option key={t} value={t}>
+                            {t}
+                          </option>
+                        )
+                      })}
+                    </select>
+                  </>
+                ) : (
+                  <div>{state.npc.traits[traitName]}</div>
+                )}
+              </div>
             </div>
           )
         })}
@@ -174,21 +177,29 @@ function NPC({name}) {
       <div className="controls">
         {state.isEditing ? (
           <>
-            <GiPerspectiveDiceSixFacesRandom
-              title="Randomize all"
-              onClick={randomizeAll}
-              size={iconSize}
-            />
-            <GiCancel onClick={discard} size={iconSize} title="Discard" />
-            <GiCheckMark onClick={save} size={iconSize} title="Save changes" />
+            <div className="icon random-icon">
+              <GiPerspectiveDiceSixFacesRandom
+                title="Randomize"
+                onClick={randomizeAll}
+                size={iconSize}
+              />
+            </div>
+            <div className="icon discard-icon">
+              <GrClose onClick={discard} size={iconSize} title="Discard" />
+            </div>
+            <div className="icon save-icon">
+              <GiCheckMark onClick={save} size={iconSize} title="Save changes" />
+            </div>
           </>
         ) : (
-          <GrEdit
-            onClick={editToggle}
-            className="icon edit-icon"
-            size={iconSize}
-            title="Edit NPC"
-          />
+          <>
+            <div className="icon edit-icon">
+              <GrEdit onClick={editToggle} size={iconSize} title="Edit NPC" />
+            </div>
+            <div className="icon delete-icon">
+              <GrTrash size={iconSize} title="Delete NPC" />
+            </div>
+          </>
         )}
       </div>
     </div>
