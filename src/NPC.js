@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import * as traits from './traits'
 import {GiPerspectiveDiceSixFacesRandom, GiCheckMark} from 'react-icons/gi'
-import {GrClose, GrEdit, GrTrash} from 'react-icons/gr'
+import {BsTrashFill} from 'react-icons/bs'
+import {IoMdCloseCircleOutline} from 'react-icons/io'
+import {CiEdit} from 'react-icons/ci'
 /** Get random integer from inclusive range */
 // function getRandomInt(min, max) {
 //   return Math.floor(Math.random() * (max - min + 1)) + min
 // }
-const iconSize = 50
 
 function getRandomValue(values) {
   const getRandomInt = (max, min) => {
@@ -27,8 +28,6 @@ const traitToHuman = {
   lowStat: 'Low stat',
   highStat: 'High stat',
   zodiac: 'Zodiac',
-  // idealCategory: 'Ideal category',
-  // ideal: 'Ideal',
 }
 
 function generateRandomTraits() {
@@ -120,13 +119,38 @@ function NPC({name, deleteNPC, id}) {
     <div className="npc-card">
       <div className="name-container">
         {state.isEditing ? (
-          <input
-            value={state.workingNpc.name}
-            onChange={e => changeName(e)}
-            className="edit-name"
-          />
+          <>
+            <input
+              value={state.workingNpc.name}
+              onChange={e => changeName(e)}
+              placeholder="What's my name?"
+              className="edit-name"
+            />
+            <GiPerspectiveDiceSixFacesRandom
+              title="Randomize"
+              onClick={randomizeAll}
+            />
+            <IoMdCloseCircleOutline
+              className="icon"
+              onClick={discard}
+              title="Discard"
+            />
+            <GiCheckMark onClick={save} title="Save changes" />
+          </>
         ) : (
-          <div className="npc-name">{state.npc.name}</div>
+          <>
+            <CiEdit
+              onClick={editToggle}
+              title="Edit NPC"
+              className="icon edit-icon"
+            />
+            <div className="npc-name">{state.npc.name || 'Anonymous'}</div>
+            <BsTrashFill
+              title="Delete NPC"
+              onClick={() => deleteNPC(id)}
+              className="icon delete-icon"
+            />
+          </>
         )}
       </div>
       <div className="traits">
@@ -143,7 +167,7 @@ function NPC({name, deleteNPC, id}) {
                       }}
                       size={25}
                       title="Randomize Trait"
-                      className="randomTrait-icon"
+                      className="icon randomTrait-icon"
                     />
                   </div>
                 )}
@@ -174,39 +198,38 @@ function NPC({name, deleteNPC, id}) {
           )
         })}
       </div>
-      <div className="controls">
+      {/* <div className="controls">
         {state.isEditing ? (
           <>
             <div className="icon random-icon">
               <GiPerspectiveDiceSixFacesRandom
                 title="Randomize"
                 onClick={randomizeAll}
-                size={iconSize}
               />
             </div>
             <div className="icon discard-icon">
-              <GrClose onClick={discard} size={iconSize} title="Discard" />
+              <IoMdCloseCircleOutline
+                className="icon"
+                onClick={discard}
+                title="Discard"
+              />
             </div>
             <div className="icon save-icon">
-              <GiCheckMark onClick={save} size={iconSize} title="Save changes" />
+              <GiCheckMark onClick={save} title="Save changes" />
             </div>
           </>
         ) : (
           <>
             <div className="icon edit-icon">
-              <GrEdit onClick={editToggle} size={iconSize} title="Edit NPC" />
+              <CiEdit onClick={editToggle} title="Edit NPC" />
             </div>
             <div className="icon delete-icon">
-              <GrTrash
-                size={iconSize}
-                title="Delete NPC"
-                onClick={() => deleteNPC(id)}
-              />
+              <BsTrashFill title="Delete NPC" onClick={() => deleteNPC(id)} />
             </div>
           </>
-        )}
-      </div>
+        )} */}
     </div>
+    // </div>
   )
 }
 

@@ -5,8 +5,10 @@ import {ImUserPlus} from 'react-icons/im'
 function Generator() {
   const [npcs, setNpcs] = useState([])
   const [input, setInput] = useState('')
-  const handleSubmit = e => {
-    e.preventDefault()
+  const handleKey = e => {
+    if (e.code === 'Enter') handleSubmit()
+  }
+  const handleSubmit = () => {
     setNpcs(prevNPCS => [...prevNPCS, {name: input, id: prevNPCS.length}])
     setInput('')
   }
@@ -14,8 +16,26 @@ function Generator() {
     const updatedNPCs = npcs.filter(npc => npc.id !== id)
     setNpcs(updatedNPCs)
   }
+
   return (
     <div className="npc-generator">
+      <div className="title-bar">
+        <header>
+          <p>NPC Generator</p>
+          <span>Made with ❤️ by Sav, Lino, and Jake</span>
+        </header>
+        <div title="Add NPC">
+          <ImUserPlus className="icon" onClick={handleSubmit} />
+          <input
+            placeholder="Give me a name..."
+            type="text"
+            onKeyDown={e => handleKey(e)}
+            required
+            onChange={e => setInput(e.target.value)}
+            value={input}
+          />
+        </div>
+      </div>
       <div className="npc-list">
         {npcs &&
           npcs.map(npc => {
@@ -23,20 +43,6 @@ function Generator() {
               <NPC key={npc.id} name={npc.name} deleteNPC={deleteNPC} id={npc.id} />
             )
           })}
-        <div className="add-npc" title="Add NPC">
-          <form onSubmit={e => handleSubmit(e)}>
-            <button type="submit">
-              <ImUserPlus size={170} />
-            </button>
-            <input
-              placeholder="Give me a name..."
-              type="text"
-              required
-              onChange={e => setInput(e.target.value)}
-              value={input}
-            />
-          </form>
-        </div>
       </div>
     </div>
   )

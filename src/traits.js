@@ -101,19 +101,19 @@ export const interaction = [
 ]
 
 export const bond = [
-  'Dedicated to a personal life goal',
-  'Protective of close family members',
-  'Protective of colleagues or compatriots',
-  'Loyal to a benefactor, or patron',
-  'Captivated by a romantic interest',
+  'Dedicated to a life goal',
+  'Protective of family members',
+  'Protective of compatriots',
+  'Loyal to a benefactor',
+  'Captivated by a romance',
   'Drawn to a special place',
-  'Protective of a sentimental keepsake',
-  'Protective of a valuable possession',
+  'Protective of a keepsake',
+  'Protective of a possession',
   'Out for revenge',
 ]
 
 export const flaw = [
-  'Forbidden love or easily romanced',
+  'Forbidden love/easily swooned',
   'Enjoys decadent pleasures',
   'Arrogance',
   "Envies another's possessions",

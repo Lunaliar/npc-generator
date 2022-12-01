@@ -1,164 +1,54 @@
 .App {
-  width: 100vw;
-  min-height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  background: #7f8c8d;
-  color: white;
 }
-
-h1 {
-  text-align: center;
-}
-.name-container {
+.title-bar {
   display: flex;
-  height: 60px;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  font-size: 1.5rem;
-}
-.trait {
-  display: flex;
-  gap: 16px;
-}
-.npc-generator {
-  display: flex;
-  justify-content: center;
-}
-.npc-list {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 40px;
 }
 .add-npc {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 32px 24px;
-  height: 600px;
-  width: 600px;
 }
 .add-npc form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 7px solid white;
-  height: 370px;
-  width: 370px;
-  border-radius: 50%;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 .add-npc input {
-  line-height: 2rem;
-  border-radius: 1rem;
-  border: none;
-  outline: none;
-  font-size: 1.7rem;
-  width: 75%;
-  text-align: center;
-  margin-bottom: 2rem;
-  padding: 0.5rem 0;
 }
 .add-npc button {
-  color: white;
-  background: none;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  user-select: none;
+}
+.name-container {
+}
+.trait {
+}
+.npc-generator {
+}
+.npc-list {
 }
 
 .npc-card {
-  padding: 1rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 0.75rem;
-  background: white;
-  color: black;
-  width: 550px;
 }
 
 .traits {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 1rem;
-  padding: 0.5rem 0.2rem;
-  gap: 4px;
 }
 .edit-name {
-  text-align: center;
 }
 .trait-name {
-  font-weight: 800;
-  font-size: 1rem;
 }
 .trait-items {
-  display: flex;
 }
 
 .trait-row {
-  user-select: none;
-  height: 60px;
-  width: 260px;
-  display: flex;
-  flex-direction: column;
-  margin: 0.5rem 0;
 }
 .trait-row select {
-  user-select: none;
-  width: 260px;
-  border: none;
-  border-bottom: 2px solid red;
-  margin-left: auto;
 }
 .randomTrait-icon {
-  cursor: pointer;
 }
 .icon {
-  padding: 0.75rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  cursor: pointer;
-  border: 3px solid black;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 .icon:active {
-  transform: scale(0.9);
-  transition: all 0.5 ease-in-out;
 }
 .trait-icon {
-  display: flex;
-  margin-right: 0.3rem;
-  margin-bottom: 0.2rem;
-  justify-content: center;
-  padding: 0.1rem;
-  align-items: center;
-  border-radius: 50%;
-  border: 3px solid black;
-  cursor: pointer;
-  box-shadow: 0 1px 2.5px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
 }
 .trait-icon:active {
-  transform: scale(0.9);
-  transition: all 0.5 ease-in-out;
 }
 
 footer {
-  padding: 8px;
-  text-align: center;
 }
 
 .controls {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 60px;
 }
