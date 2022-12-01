@@ -111,14 +111,18 @@
     .traits {
       user-select: none;
       padding: 0.25rem;
+      display: flex;
+      flex-direction: column;
       gap: 0.2rem;
       font-size: 0.9rem;
       .trait-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: var(--titleColor) solid 0.1rem;
+        border-bottom: var(--titleColor) solid 0.05rem;
         .trait-items {
+          align-items: center;
+          justify-content: space-between;
           display: flex;
         }
         .trait-value {
