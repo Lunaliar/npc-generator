@@ -2,6 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 import NPC from './NPC'
 import {ImUserPlus} from 'react-icons/im'
+const space = ' '
 function Generator() {
   const [npcs, setNpcs] = useState([])
   const [input, setInput] = useState('')
@@ -22,7 +23,6 @@ function Generator() {
       <div className="title-bar">
         <header>
           <p>NPC Generator</p>
-          <span>Made with ❤️ by Sav, Lino, and Jake</span>
         </header>
         <div title="Add NPC">
           <ImUserPlus className="icon" onClick={handleSubmit} />
@@ -44,6 +44,11 @@ function Generator() {
             )
           })}
       </div>
+      <p className="credit">
+        Made with ❤️ by&nbsp;
+        <a href="https://savcodes.dev">Sav</a>, Lino, and&nbsp;
+        <a href="https://jaketripp.com/">Jake</a>
+      </p>
     </div>
   )
 }
