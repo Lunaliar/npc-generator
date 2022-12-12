@@ -2,7 +2,6 @@ import React from 'react'
 import {useState} from 'react'
 import NPC from './NPC'
 import {ImUserPlus} from 'react-icons/im'
-const space = ' '
 function Generator() {
   const [npcs, setNpcs] = useState([])
   const [input, setInput] = useState('')
