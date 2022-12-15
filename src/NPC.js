@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
-import * as traits from './traits'
-import {GiPerspectiveDiceSixFacesRandom, GiCheckMark} from 'react-icons/gi'
-import {BsTrashFill} from 'react-icons/bs'
-import {IoMdCloseCircleOutline} from 'react-icons/io'
-import {CiEdit} from 'react-icons/ci'
+import React, { useState } from "react"
+import * as traits from "./traits"
+import { GiPerspectiveDiceSixFacesRandom, GiCheckMark } from "react-icons/gi"
+import { BsTrashFill } from "react-icons/bs"
+import { IoMdCloseCircleOutline } from "react-icons/io"
+import { CiEdit } from "react-icons/ci"
 /** Get random integer from inclusive range */
 // function getRandomInt(min, max) {
 //   return Math.floor(Math.random() * (max - min + 1)) + min
@@ -17,17 +17,17 @@ function getRandomValue(values) {
 }
 
 const traitToHuman = {
-  appearance: 'Appearance',
-  aesthetic: 'Aesthetic',
-  talent: 'Talent',
-  mannerism: 'Mannerism',
-  interaction: 'Interaction',
-  bond: 'Bond',
-  flaw: 'Flaw',
-  fear: 'Fear',
-  lowStat: 'Low stat',
-  highStat: 'High stat',
-  zodiac: 'Zodiac',
+  appearance: "Appearance",
+  aesthetic: "Aesthetic",
+  talent: "Talent",
+  mannerism: "Mannerism",
+  interaction: "Interaction",
+  bond: "Bond",
+  flaw: "Flaw",
+  fear: "Fear",
+  lowStat: "Low stat",
+  highStat: "High stat",
+  zodiac: "Zodiac",
 }
 
 function generateRandomTraits() {
@@ -53,12 +53,12 @@ function generateNpc(name) {
   }
 }
 
-function NPC({name, deleteNPC, id}) {
+function NPC({ name, deleteNPC, id }) {
   //! STATE ////////////////////////////////
   const initialNpc = generateNpc(name)
   const [state, setState] = useState({
     npc: initialNpc,
-    workingNpc: {...initialNpc},
+    workingNpc: { ...initialNpc },
     isEditing: false,
   })
   //! FUNCTIONS //////////////////////////////////////
@@ -85,7 +85,7 @@ function NPC({name, deleteNPC, id}) {
     return setState({
       ...state,
       npc: newNpc,
-      workingNpc: {...newNpc},
+      workingNpc: { ...newNpc },
     })
   }
 
@@ -105,15 +105,15 @@ function NPC({name, deleteNPC, id}) {
   const changeName = e => {
     return setState(prevState => ({
       ...state,
-      workingNpc: {...prevState.workingNpc, name: e.target.value},
+      workingNpc: { ...prevState.workingNpc, name: e.target.value },
     }))
   }
 
   const save = () =>
-    setState({...state, isEditing: false, npc: {...state.workingNpc}})
+    setState({ ...state, isEditing: false, npc: { ...state.workingNpc } })
   const discard = () =>
-    setState({...state, isEditing: false, workingNpc: {...state.npc}})
-  const editToggle = () => setState({...state, isEditing: true})
+    setState({ ...state, isEditing: false, workingNpc: { ...state.npc } })
+  const editToggle = () => setState({ ...state, isEditing: true })
 
   return (
     <div className="npc-card">
@@ -144,7 +144,7 @@ function NPC({name, deleteNPC, id}) {
               title="Edit NPC"
               className="icon edit-icon"
             />
-            <div className="npc-name">{state.npc.name || 'Anonymous'}</div>
+            <div className="npc-name">{state.npc.name || "Anonymous"}</div>
             <BsTrashFill
               title="Delete NPC"
               onClick={() => deleteNPC(id)}

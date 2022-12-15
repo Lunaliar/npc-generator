@@ -1,6 +1,6 @@
-import './normalize.css'
-import './styler.scss'
-import Generator from './Generator'
+import "./normalize.css"
+import "./styler.scss"
+import Generator from "./Generator"
 
 function App() {
   return (

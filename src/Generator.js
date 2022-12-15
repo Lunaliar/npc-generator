@@ -1,16 +1,16 @@
-import React from 'react'
-import {useState} from 'react'
-import NPC from './NPC'
-import {ImUserPlus} from 'react-icons/im'
+import React from "react"
+import { useState } from "react"
+import NPC from "./NPC"
+import { ImUserPlus } from "react-icons/im"
 function Generator() {
   const [npcs, setNpcs] = useState([])
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState("")
   const handleKey = e => {
-    if (e.code === 'Enter') handleSubmit()
+    if (e.code === "Enter") handleSubmit()
   }
   const handleSubmit = () => {
-    setNpcs(prevNPCS => [...prevNPCS, {name: input, id: prevNPCS.length}])
-    setInput('')
+    setNpcs(prevNPCS => [...prevNPCS, { name: input, id: prevNPCS.length }])
+    setInput("")
   }
   const deleteNPC = id => {
     const updatedNPCs = npcs.filter(npc => npc.id !== id)
@@ -39,7 +39,12 @@ function Generator() {
         {npcs &&
           npcs.map(npc => {
             return (
-              <NPC key={npc.id} name={npc.name} deleteNPC={deleteNPC} id={npc.id} />
+              <NPC
+                key={npc.id}
+                name={npc.name}
+                deleteNPC={deleteNPC}
+                id={npc.id}
+              />
             )
           })}
       </div>
