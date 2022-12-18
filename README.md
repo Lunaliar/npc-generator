@@ -1,6 +1,6 @@
 # NPC Generator
 
-I started the project with the help of my two friends Jake and Lino. I wanted an easier way to create random Non player characters for my D&D campaigns. I had an absolute blast making this app and it was one of my first times truly working alongside other developers. I can't wait to use this for my games and share it with my friends.
+I started the project with the help of my two friends, Jake and Lino. I wanted an easier way to create random Nonplayer characters for my D&D campaigns. I had an absolute blast making this app; it was one of my first times truly working alongside other developers. I can't wait to use this for my games and share it with my friends.
 
 # Getting Started with Create React App
 
