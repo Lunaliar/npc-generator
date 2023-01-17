@@ -2,16 +2,20 @@ import React from "react"
 import { useState } from "react"
 import NPC from "./NPC"
 import { ImUserPlus } from "react-icons/im"
+
 function Generator() {
   const [npcs, setNpcs] = useState([])
   const [input, setInput] = useState("")
+
   const handleKey = e => {
-    if (e.code === "Enter") handleSubmit()
+    e.code === "Enter" && handleSubmit()
   }
+
   const handleSubmit = () => {
     setNpcs(prevNPCS => [...prevNPCS, { name: input, id: prevNPCS.length }])
     setInput("")
   }
+
   const deleteNPC = id => {
     const updatedNPCs = npcs.filter(npc => npc.id !== id)
     setNpcs(updatedNPCs)
@@ -63,9 +67,6 @@ export default Generator
 // we have lists of data
 // we want to be able to randomly choose an item from each list
 // for some of the more complicated ones (ideals), we even want to randomly choose which category, and THEN which item from that category
-
-// if someone is unhappy with a characteristic, we could allow them to randomly just change that characteristic
-// we could even allow them to specifically pick the characteristic from our list as well
 
 // in the future, we might want the ability to do multiple of these simultaneously
 
